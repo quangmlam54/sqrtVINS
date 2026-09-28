@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CMake Configure",
+      "type": "shell",
+      "command": "cmake -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build (gnc_forecast_demo)",
+      "type": "shell",
+      "command": "cmake --build build",
+      "group": { "kind": "build", "isDefault": true },
+      "dependsOn": ["CMake Configure"],
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Run demo",
+      "type": "shell",
+      "command": "./build/gnc_forecast_demo",
+      "dependsOn": ["Build (gnc_forecast_demo)"],
+      "problemMatcher": []
+    }
+  ]
+}
